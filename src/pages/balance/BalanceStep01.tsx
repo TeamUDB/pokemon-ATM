@@ -20,18 +20,18 @@ const BalanceStep01 = () => {
     <div className="h-screen bg-indigo-100 flex justify-center items-center pt-10">
       <div className={"w-full h-full board"}>
         <KeyOption
-          key={"key-01"}
+          key={"keyButton-01"}
           side={Side.RIGHT}
           label={"XXXXXX1234-1"}
           onClick={() => handleSelectAccount}/>
-        <KeyDisable key={"key-02"}></KeyDisable>
-        <KeyDisable key={"key-03"}></KeyDisable>
-        <KeyDisable key={"key-04"}></KeyDisable>
-        <KeyDisable key={"key-05"}></KeyDisable>
-        <KeyDisable key={"key-06"}></KeyDisable>
-        <KeyDisable key={"key-07"}></KeyDisable>
+        <KeyDisable keyButton={"keyButton-02"}></KeyDisable>
+        <KeyDisable keyButton={"keyButton-03"}></KeyDisable>
+        <KeyDisable keyButton={"keyButton-04"}></KeyDisable>
+        <KeyDisable keyButton={"keyButton-05"}></KeyDisable>
+        <KeyDisable keyButton={"keyButton-06"}></KeyDisable>
+        <KeyDisable keyButton={"keyButton-07"}></KeyDisable>
         <KeyOption
-          key={"key-08"}
+          key={"keyButton-08"}
           side={Side.LEFT}
           label={"Regresar"}
           onClick={handleBack}/>

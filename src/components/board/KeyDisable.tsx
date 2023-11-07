@@ -1,9 +1,9 @@
 type propsKey = {
-  key: string;
+  keyButton: string;
 }
 
 const KeyDisable = (props: propsKey) => (
-  <div className={props.key}>
+  <div className={props.keyButton}>
     <div></div>
   </div>
 

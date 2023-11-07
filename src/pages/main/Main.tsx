@@ -10,36 +10,36 @@ const Main = () => {
 
   return (
     <>
-      <div className={ "w-full max-h-screen board" }>
+      <div className={ "w-full h-[100vh] pt-10 board" }>
         <KeyOption
-          key={ "key-01" }
+          keyButton={ "keyButton-01" }
           side={ Side.RIGHT }
           label={ "Retiro" }
-          onClick={ () => navigate('/withdrawal') }/>
+          onClick={ () => navigate('/accounts') }/>
         <KeyOption
-          key={ "key-02" }
+          keyButton={ "keyButton-02" }
           side={ Side.LEFT }
           label={ "Consulta" }
           onClick={ () => navigate('/balance') }/>
         <KeyOption
-          key={ "key-03" }
+          keyButton={ "keyButton-03" }
           side={ Side.RIGHT }
           label={ "Deposito" }
           onClick={ () => navigate('/deposit') }/>
         <KeyOption
-          key={ "key-04" }
+          keyButton={ "keyButton-04" }
           side={ Side.LEFT }
           label={ "Estado de cuenta" }
           onClick={ () => navigate('/account-status') }/>
         <KeyOption
-          key={ "key-05" }
+          keyButton={ "keyButton-05" }
           side={ Side.RIGHT }
           label={ "Pago de servicios" }
           onClick={ () => navigate('/payment-services') }/>
-        <KeyDisable key={ "key-06" }></KeyDisable>
-        <KeyDisable key={ "key-07" }></KeyDisable>
+        <KeyDisable keyButton={ "keyButton-06" }></KeyDisable>
+        <KeyDisable keyButton={ "keyButton-07" }></KeyDisable>
         <KeyOption
-          key={ "key-08" }
+          keyButton={ "keyButton-08" }
           side={ Side.LEFT }
           label={ "Salir" }
           onClick={ () => navigate('/login') }/>
