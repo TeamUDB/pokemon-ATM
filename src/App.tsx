@@ -8,24 +8,27 @@ import BalanceStep01 from "./pages/balance/BalanceStep01.tsx";
 import WithdrawalStep01 from "./pages/withdrawal/WithdrawalStep01.tsx";
 import DepositStep01 from "./pages/deposit/DepositStep01.tsx";
 import PaymentServiceStep01 from "./pages/payment-services/PaymentServiceStep01.tsx";
+import MainTemplate from "./template/main-template.tsx";
 
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={ queryClient }>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/main" element={<Main/>}/>
-          <Route path="/account-status" element={<AccountStatusStep01/>}/>
-          <Route path="/balance" element={<BalanceStep01/>}/>
-          <Route path="/withdrawal" element={<WithdrawalStep01/>}/>
-          <Route path="/deposit" element={<DepositStep01/>}/>
-          <Route path="/payment-services" element={<PaymentServiceStep01/>}/>
-          <Route path="/" element={<Login/>}/>
-          <Route path="*" element={<Login/>}/>
+          <Route path="/login" element={ <Login/> }/>
+          <Route element={ <MainTemplate/> }>
+            <Route path="/main" element={ <Main/> }/>
+            <Route path="/account-status" element={ <AccountStatusStep01/> }/>
+            <Route path="/balance" element={ <BalanceStep01/> }/>
+            <Route path="/withdrawal" element={ <WithdrawalStep01/> }/>
+            <Route path="/deposit" element={ <DepositStep01/> }/>
+            <Route path="/payment-services" element={ <PaymentServiceStep01/> }/>
+          </Route>
+          <Route path="/" element={ <Login/> }/>
+          <Route path="*" element={ <Login/> }/>
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

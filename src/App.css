@@ -1,3 +1,7 @@
+body {
+    background-color: #E8EADF;
+}
+
 .board {
 
     display: grid;
