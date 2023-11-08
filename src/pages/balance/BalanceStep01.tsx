@@ -1,45 +1,30 @@
-import KeyOption from "../../components/board/KeyOption.tsx";
-import { Side } from "../../components/board/Side.tsx";
-import KeyDisable from "../../components/board/KeyDisable.tsx";
 import { useNavigate } from "react-router-dom";
 import InfoSection from "../../components/board/InfoSection.tsx";
+import { useEffect, useState } from "react";
+import Accounts from "../../shared/accounts/Accounts.tsx";
 
 const BalanceStep01 = () => {
 
+  const [ exit, setExit ] = useState(false);
+
   const navigate = useNavigate();
 
-  const handleSelectAccount = (account: string) => {
-    console.log("handleSelectAccount => ", account);
-  }
-
-  const handleBack = () => {
-    navigate('/main')
-  }
+  useEffect(() => {
+    if (exit) {
+      navigate('/main');
+    }
+    return () => {
+      setExit(false);
+    }
+  }, [ exit ]);
 
   return (
-    <div className="h-screen bg-indigo-100 flex justify-center items-center pt-10">
-      <div className={"w-full h-full board"}>
-        <KeyOption
-          key={"keyButton-01"}
-          side={Side.RIGHT}
-          label={"XXXXXX1234-1"}
-          onClick={() => handleSelectAccount}/>
-        <KeyDisable keyButton={"keyButton-02"}></KeyDisable>
-        <KeyDisable keyButton={"keyButton-03"}></KeyDisable>
-        <KeyDisable keyButton={"keyButton-04"}></KeyDisable>
-        <KeyDisable keyButton={"keyButton-05"}></KeyDisable>
-        <KeyDisable keyButton={"keyButton-06"}></KeyDisable>
-        <KeyDisable keyButton={"keyButton-07"}></KeyDisable>
-        <KeyOption
-          key={"keyButton-08"}
-          side={Side.LEFT}
-          label={"Regresar"}
-          onClick={handleBack}/>
+    <div className="h-screen flex justify-center items-center">
+      <div className={ "w-full h-[100vh] pt-10 board" }>
+        <Accounts accounts={ [ "123456789", "987654321" ] } setBack={ setExit }/>
         <InfoSection>
-          <div className={"flex flex-col items-center h-full w-full"}>
-            <h2 className={"font-light text-4xl pt-20"}>Estimado cliente</h2>
-            <h2 className={"font-light text-4xl pt-3"}>Victor Hugo Cornejo Calderon</h2>
-            <p className={"text-2xl pt-20"}>Seleccione una cuenta</p>
+          <div className={ "flex flex-col items-center w-full" }>
+            <h2 className={ "font-light text-4xl" }>Seleccione una cuenta</h2>
           </div>
         </InfoSection>
       </div>
