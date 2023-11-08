@@ -15,7 +15,7 @@ const Main = () => {
           keyButton={ "keyButton-01" }
           side={ Side.RIGHT }
           label={ "Retiro" }
-          onClick={ () => navigate('/accounts') }/>
+          onClick={ () => navigate('/withdrawal') }/>
         <KeyOption
           keyButton={ "keyButton-02" }
           side={ Side.LEFT }
