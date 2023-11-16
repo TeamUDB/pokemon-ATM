@@ -30,6 +30,6 @@ export const AccountsServices = (customerId: number) => {
   return new Promise<AccountInfo[]>((resolve) => {
     setTimeout(() => {
       resolve(accounts.filter(account => account.customerId === customerId));
-    }, 1000);
+    }, 500);
   });
 }

@@ -17,6 +17,7 @@ const BalanceStep01 = () => {
 
   useEffect(() => {
     if (exit) {
+      localStorage.removeItem('accountSelected');
       navigate('/main');
     }
     return () => {
@@ -36,6 +37,7 @@ const BalanceStep01 = () => {
   useEffect(() => {
     if (accountSelected) {
       localStorage.setItem('accountSelected', accountSelected);
+      setGoto(true);
     }
     return () => {
       setAccountSelected("");
@@ -51,8 +53,7 @@ const BalanceStep01 = () => {
               <h2 className={ "font-light text-4xl" }>Cargando...</h2>
             </div>
           ) : (
-            <Accounts accounts={ data ? data : [] } setBack={ setExit } setGoto={ setGoto }
-                      setAccountSelected={ setAccountSelected }/>
+            <Accounts accounts={ data ? data : [] } setBack={ setExit } setAccountSelected={ setAccountSelected }/>
           )
         }
         {

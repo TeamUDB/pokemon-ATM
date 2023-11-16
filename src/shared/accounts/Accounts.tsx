@@ -8,7 +8,6 @@ import KeyBack from "../../components/board/KeyBack.tsx";
 type PropsAccounts = {
   accounts: AccountInfo[];
   setBack: Dispatch<SetStateAction<boolean>>;
-  setGoto: Dispatch<SetStateAction<boolean>>;
   setAccountSelected: Dispatch<SetStateAction<string>>;
 }
 
@@ -83,7 +82,7 @@ const Accounts = (props: PropsAccounts) => {
         <KeyDisable keyButton={ "keyButton-01" }></KeyDisable>)
       }
 
-      <KeyBack setBack={ props.setBack } label={ "Regresar" } side={ Side.RIGHT }
+      <KeyBack setBack={ props.setBack } label={ "Regresar" } side={ Side.LEFT }
                keyButton={ "keyButton-08" }></KeyBack>)
     </>
   );
