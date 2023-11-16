@@ -2,12 +2,18 @@ import { useNavigate } from "react-router-dom";
 import InfoSection from "../../components/board/InfoSection.tsx";
 import { useEffect, useState } from "react";
 import Accounts from "../../shared/accounts/Accounts.tsx";
+import { useAccountFind } from "../../hooks/useAccountFind.tsx";
 
 const BalanceStep01 = () => {
 
   const [ exit, setExit ] = useState(false);
+  const [ goto, setGoto ] = useState(false);
+  const [ accountSelected, setAccountSelected ] = useState<string>("");
+
 
   const navigate = useNavigate();
+
+  const { data, error, isLoading } = useAccountFind(2542);
 
   useEffect(() => {
     if (exit) {
@@ -18,10 +24,47 @@ const BalanceStep01 = () => {
     }
   }, [ exit ]);
 
+  useEffect(() => {
+    if (goto) {
+      navigate('/balance/step-02');
+    }
+    return () => {
+      setGoto(false);
+    }
+  }, [ goto ]);
+
+  useEffect(() => {
+    if (accountSelected) {
+      localStorage.setItem('accountSelected', accountSelected);
+    }
+    return () => {
+      setAccountSelected("");
+    }
+  }, [ accountSelected ]);
+
   return (
     <div className="h-screen flex justify-center items-center">
       <div className={ "w-full h-[100vh] pt-10 board" }>
-        <Accounts accounts={ [ "123456789", "987654321" ] } setBack={ setExit }/>
+        {
+          isLoading ? (
+            <div className={ "flex flex-col items-center w-full" }>
+              <h2 className={ "font-light text-4xl" }>Cargando...</h2>
+            </div>
+          ) : (
+            <Accounts accounts={ data ? data : [] } setBack={ setExit } setGoto={ setGoto }
+                      setAccountSelected={ setAccountSelected }/>
+          )
+        }
+        {
+          error ? (
+            <div className={ "flex flex-col items-center w-full" }>
+              <h2 className={ "font-light text-4xl" }>Error al cargar las cuentas</h2>
+            </div>
+          ) : (
+            <></>
+          )
+        }
+
         <InfoSection>
           <div className={ "flex flex-col items-center w-full" }>
             <h2 className={ "font-light text-4xl" }>Seleccione una cuenta</h2>

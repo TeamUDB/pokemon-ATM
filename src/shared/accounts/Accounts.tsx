@@ -1,22 +1,18 @@
 import KeyOption from "../../components/board/KeyOption.tsx";
 import { Side } from "../../components/board/Side.tsx";
 import KeyDisable from "../../components/board/KeyDisable.tsx";
-import { useNavigate } from "react-router-dom";
 import { Dispatch, SetStateAction } from "react";
+import { AccountInfo } from "../../services/accouts.services.tsx";
+import KeyBack from "../../components/board/KeyBack.tsx";
 
 type PropsAccounts = {
-  accounts: string[];
+  accounts: AccountInfo[];
   setBack: Dispatch<SetStateAction<boolean>>;
+  setGoto: Dispatch<SetStateAction<boolean>>;
+  setAccountSelected: Dispatch<SetStateAction<string>>;
 }
 
 const Accounts = (props: PropsAccounts) => {
-
-  const navigate = useNavigate();
-  const { setBack } = props;
-
-  const onClickBack = () => {
-    setBack(true);
-  };
 
   return (
     <>
@@ -24,62 +20,71 @@ const Accounts = (props: PropsAccounts) => {
         <KeyOption
           keyButton={ "keyButton-01" }
           side={ Side.RIGHT }
-          label={ props.accounts[0] }
-          onClick={ () => navigate('/withdrawal') }/>) : (
+          value={ props.accounts[0].accountNumber }
+          label={ props.accounts[0].accountNumber }
+          accountSelected={ props.setAccountSelected }/>) : (
         <KeyDisable keyButton={ "keyButton-01" }></KeyDisable>)
       }
       { props.accounts.length > 1 && props.accounts[1] ? (
         <KeyOption
           keyButton={ "keyButton-02" }
           side={ Side.LEFT }
-          label={ props.accounts[1] }
-          onClick={ () => navigate('/balance') }/>) : (
-        <KeyDisable keyButton={ "keyButton-02" }></KeyDisable>)
+          value={ props.accounts[1].accountNumber }
+          accountSelected={ props.setAccountSelected }
+          label={ props.accounts[1].accountNumber }
+        />) : (
+        <KeyDisable keyButton={ "keyButton-01" }></KeyDisable>)
       }
       { props.accounts.length > 2 && props.accounts[2] ? (
         <KeyOption
           keyButton={ "keyButton-03" }
           side={ Side.RIGHT }
-          label={ props.accounts[2] }
-          onClick={ () => navigate('/deposit') }/>) : (
-        <KeyDisable keyButton={ "keyButton-03" }></KeyDisable>)
+          value={ props.accounts[2].accountNumber }
+          accountSelected={ props.setAccountSelected }
+          label={ props.accounts[2].accountNumber }
+        />) : (
+        <KeyDisable keyButton={ "keyButton-01" }></KeyDisable>)
       }
       { props.accounts.length > 3 && props.accounts[3] ? (
         <KeyOption
           keyButton={ "keyButton-04" }
           side={ Side.LEFT }
-          label={ props.accounts[3] }
-          onClick={ () => navigate('/account-status') }/>) : (
-        <KeyDisable keyButton={ "keyButton-04" }></KeyDisable>)
+          value={ props.accounts[3].accountNumber }
+          accountSelected={ props.setAccountSelected }
+          label={ props.accounts[3].accountNumber }
+        />) : (
+        <KeyDisable keyButton={ "keyButton-01" }></KeyDisable>)
       }
       { props.accounts.length > 4 && props.accounts[4] ? (<KeyOption
         keyButton={ "keyButton-05" }
         side={ Side.RIGHT }
-        label={ props.accounts[4] }
-        onClick={ () => navigate('/payment-services') }/>) : (
-        <KeyDisable keyButton={ "keyButton-05" }></KeyDisable>)
+        value={ props.accounts[4].accountNumber }
+        accountSelected={ props.setAccountSelected }
+        label={ props.accounts[4].accountNumber }
+      />) : (
+        <KeyDisable keyButton={ "keyButton-01" }></KeyDisable>)
       }
       { props.accounts.length > 5 && props.accounts[5] ? (<KeyOption
         keyButton={ "keyButton-06" }
         side={ Side.RIGHT }
-        label={ props.accounts[5] }
-        onClick={ () => navigate('/payment-services') }/>) : (
-        <KeyDisable keyButton={ "keyButton-06" }></KeyDisable>)
+        value={ props.accounts[5].accountNumber }
+        accountSelected={ props.setAccountSelected }
+        label={ props.accounts[5].accountNumber }
+      />) : (
+        <KeyDisable keyButton={ "keyButton-01" }></KeyDisable>)
       }
-      { props.accounts.length > 5 && props.accounts[5] ? (<KeyOption
+      { props.accounts.length > 6 && props.accounts[6] ? (<KeyOption
         keyButton={ "keyButton-07" }
         side={ Side.RIGHT }
-        label={ props.accounts[6] }
-        onClick={ () => navigate('/payment-services') }/>) : (
-        <KeyDisable keyButton={ "keyButton-07" }></KeyDisable>)
+        value={ props.accounts[6].accountNumber }
+        accountSelected={ props.setAccountSelected }
+        label={ props.accounts[6].accountNumber }
+      />) : (
+        <KeyDisable keyButton={ "keyButton-01" }></KeyDisable>)
       }
-      <KeyOption
-        keyButton={ "keyButton-08" }
-        side={ Side.LEFT }
-        label={ "Regresar" }
-        onClick={ () => {
-          onClickBack()
-        } }/>
+
+      <KeyBack setBack={ props.setBack } label={ "Regresar" } side={ Side.RIGHT }
+               keyButton={ "keyButton-08" }></KeyBack>)
     </>
   );
 }

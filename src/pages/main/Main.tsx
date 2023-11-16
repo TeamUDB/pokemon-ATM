@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import KeyOption from "../../components/board/KeyOption.tsx";
 import { Side } from "../../components/board/Side.tsx";
 import KeyDisable from "../../components/board/KeyDisable.tsx";
 import InfoSection from "../../components/board/InfoSection.tsx";
+import KeyNavigate from "../../components/board/KeyNavigate.tsx";
 
 const Main = () => {
 
@@ -11,34 +11,34 @@ const Main = () => {
   return (
     <>
       <div className={ "w-full h-[100vh] pt-10 board" }>
-        <KeyOption
+        <KeyNavigate
           keyButton={ "keyButton-01" }
           side={ Side.RIGHT }
           label={ "Retiro" }
           onClick={ () => navigate('/withdrawal') }/>
-        <KeyOption
+        <KeyNavigate
           keyButton={ "keyButton-02" }
           side={ Side.LEFT }
-          label={ "Consulta" }
+          label={ "Consulta de saldo" }
           onClick={ () => navigate('/balance') }/>
-        <KeyOption
+        <KeyNavigate
           keyButton={ "keyButton-03" }
           side={ Side.RIGHT }
           label={ "Deposito" }
           onClick={ () => navigate('/deposit') }/>
-        <KeyOption
+        <KeyNavigate
           keyButton={ "keyButton-04" }
           side={ Side.LEFT }
           label={ "Estado de cuenta" }
           onClick={ () => navigate('/account-status') }/>
-        <KeyOption
+        <KeyNavigate
           keyButton={ "keyButton-05" }
           side={ Side.RIGHT }
           label={ "Pago de servicios" }
           onClick={ () => navigate('/payment-services') }/>
         <KeyDisable keyButton={ "keyButton-06" }></KeyDisable>
         <KeyDisable keyButton={ "keyButton-07" }></KeyDisable>
-        <KeyOption
+        <KeyNavigate
           keyButton={ "keyButton-08" }
           side={ Side.LEFT }
           label={ "Salir" }
