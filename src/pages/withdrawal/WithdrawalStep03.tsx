@@ -51,19 +51,23 @@ const WithdrawalStep03 = () => {
         <KeyDisable keyButton={"keyButton-01"}></KeyDisable>
         <KeyDisable keyButton={"keyButton-02"}></KeyDisable>
         <KeyDisable keyButton={"keyButton-03"}></KeyDisable>
-        <div className={"keyButton-04"}>
-          <div className={"w-full"} id={"Imprimir"}>
-            <div className={`flex items-center justify-center bg-gray-800 h-24 rounded-l-lg`}>
-              <div className={"text-center text-white text-4xl"}>
-                <PDFDownloadLink document={<WithdrawalTemplate/>} fileName="retiro.pdf">
-                  {({loading}) =>
-                    loading ? "Loading document..." : "Comprobante"
-                  }
-                </PDFDownloadLink>
+        {
+          success ? (<div className={"keyButton-04"}>
+            <div className={"w-full"} id={"Imprimir"}>
+              <div className={`flex items-center justify-center bg-gray-800 h-24 rounded-l-lg`}>
+                <div className={"text-center text-white text-4xl"}>
+                  <PDFDownloadLink document={<WithdrawalTemplate/>} fileName="retiro.pdf">
+                    {({loading}) =>
+                      loading ? "Loading document..." : "Comprobante"
+                    }
+                  </PDFDownloadLink>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </div>) : (
+            <KeyDisable keyButton={"keyButton-04"}></KeyDisable>)
+        }
+
         <KeyDisable keyButton={"keyButton-05"}></KeyDisable>
         <KeyDisable keyButton={"keyButton-06"}></KeyDisable>
         <KeyDisable keyButton={"keyButton-07"}></KeyDisable>
