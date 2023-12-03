@@ -10,6 +10,7 @@ import DepositStep01 from "./pages/deposit/DepositStep01.tsx";
 import PaymentServiceStep01 from "./pages/payment-services/PaymentServiceStep01.tsx";
 import MainTemplate from "./template/main-template.tsx";
 import BalanceStep02 from "./pages/balance/BalanceStep02.tsx";
+import AccountStatusStep02 from "./pages/account-status/AccountStatusStep02.tsx";
 
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ function App() {
           <Route element={ <MainTemplate/> }>
             <Route path="/main" element={ <Main/> }/>
             <Route path="/account-status" element={ <AccountStatusStep01/> }/>
+            <Route path="/account-status/step-02" element={ <AccountStatusStep02/> }/>
             <Route path="/balance" element={ <BalanceStep01/> }/>
             <Route path="/balance/step-02" element={ <BalanceStep02/> }/>
             <Route path="/withdrawal" element={ <WithdrawalStep01/> }/>
