@@ -7,7 +7,6 @@ import AccountStatusStep01 from "./pages/account-status/AccountStatusStep01.tsx"
 import BalanceStep01 from "./pages/balance/BalanceStep01.tsx";
 import WithdrawalStep01 from "./pages/withdrawal/WithdrawalStep01.tsx";
 import DepositStep01 from "./pages/deposit/DepositStep01.tsx";
-import PaymentServiceStep01 from "./pages/payment-services/PaymentServiceStep01.tsx";
 import MainTemplate from "./template/main-template.tsx";
 import BalanceStep02 from "./pages/balance/BalanceStep02.tsx";
 import AccountStatusStep02 from "./pages/account-status/AccountStatusStep02.tsx";
@@ -29,7 +28,6 @@ function App() {
             <Route path="/balance/step-02" element={ <BalanceStep02/> }/>
             <Route path="/withdrawal" element={ <WithdrawalStep01/> }/>
             <Route path="/deposit" element={ <DepositStep01/> }/>
-            <Route path="/payment-services" element={ <PaymentServiceStep01/> }/>
           </Route>
           <Route path="/" element={ <Login/> }/>
           <Route path="*" element={ <Login/> }/>

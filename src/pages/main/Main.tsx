@@ -31,11 +31,7 @@ const Main = () => {
           side={ Side.LEFT }
           label={ "Estado de cuenta" }
           onClick={ () => navigate('/account-status') }/>
-        <KeyNavigate
-          keyButton={ "keyButton-05" }
-          side={ Side.RIGHT }
-          label={ "Pago de servicios" }
-          onClick={ () => navigate('/payment-services') }/>
+        <KeyDisable keyButton={ "keyButton-05" }></KeyDisable>
         <KeyDisable keyButton={ "keyButton-06" }></KeyDisable>
         <KeyDisable keyButton={ "keyButton-07" }></KeyDisable>
         <KeyNavigate
