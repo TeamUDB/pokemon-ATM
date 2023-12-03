@@ -23,57 +23,7 @@ const accounts: AccountInfo[] = [
     accountNumber: "008653321",
     balance: 2000,
     currency: "USD",
-    transactions: [
-      {
-        id: 1,
-        concept: "Pago de servicios",
-        amount: -100,
-        type: "Pago",
-        date: "2021-08-01"
-      },
-      {
-        id: 2,
-        concept: "Pago de servicios",
-        amount: -100,
-        type: "Pago",
-        date: "2021-08-01"
-      },
-      {
-        id: 3,
-        concept: "Pago de servicios",
-        amount: 100,
-        type: "Deposito",
-        date: "2021-08-01"
-      },
-      {
-        id: 4,
-        concept: "Pago de servicios",
-        amount: -100,
-        type: "Pago",
-        date: "2021-08-01"
-      },
-      {
-        id: 5,
-        concept: "Pago de servicios",
-        amount: -100,
-        type: "Pago",
-        date: "2021-08-01"
-      },
-      {
-        id: 6,
-        concept: "Pago de servicios",
-        amount: -100,
-        type: "Pago",
-        date: "2021-08-01"
-      },
-      {
-        id: 7,
-        concept: "Pago de servicios",
-        amount: -100,
-        type: "Pago",
-        date: "2021-08-01"
-      }
-    ]
+    transactions: []
   },
   {
     id: 2,
@@ -82,22 +32,7 @@ const accounts: AccountInfo[] = [
     accountNumber: "008653324",
     balance: 500,
     currency: "USD",
-    transactions: [
-      {
-        id: 1,
-        concept: "Pago de servicios",
-        amount: -100,
-        type: "Pago",
-        date: "2021-08-01"
-      },
-      {
-        id: 2,
-        concept: "Pago de servicios",
-        amount: -100,
-        type: "Pago",
-        date: "2021-08-01"
-      }
-    ]
+    transactions: []
   },
 ];
 
@@ -122,13 +57,30 @@ export const getTransactions = (customerId: number, accountNumber: string) => {
   });
 }
 
-export const addTransaction = (customerId: number, accountNumber: string, transaction: Transaction) => {
-  return new Promise<Transaction[]>((resolve) => {
+export const addWithdrawal = (customerId: number, accountNumber: string, transaction: Transaction) => {
+  console.log("addWithdrawal", customerId, accountNumber, transaction);
+  return new Promise<boolean>((resolve) => {
+    const account = accounts.find(account => account.customerId === customerId && account.accountNumber === accountNumber);
+    if (account) {
+      if (account.balance >= transaction.amount) {
+        account.transactions?.push(transaction);
+        account.balance += transaction.amount;
+        resolve(true);
+      }
+      resolve(false);
+    }
+    resolve(false);
+  });
+}
+
+export const addDeposit = (customerId: number, accountNumber: string, transaction: Transaction) => {
+  return new Promise<boolean>((resolve) => {
     const account = accounts.find(account => account.customerId === customerId && account.accountNumber === accountNumber);
     if (account) {
       account.transactions?.push(transaction);
       account.balance += transaction.amount;
+      resolve(true);
     }
-    resolve(account?.transactions || []);
+    resolve(false);
   });
 }

@@ -10,6 +10,8 @@ import DepositStep01 from "./pages/deposit/DepositStep01.tsx";
 import MainTemplate from "./template/main-template.tsx";
 import BalanceStep02 from "./pages/balance/BalanceStep02.tsx";
 import AccountStatusStep02 from "./pages/account-status/AccountStatusStep02.tsx";
+import WithdrawalStep02 from "./pages/withdrawal/WithdrawalStep02.tsx";
+import WithdrawalStep03 from "./pages/withdrawal/WithdrawalStep03.tsx";
 
 
 const queryClient = new QueryClient();
@@ -27,6 +29,8 @@ function App() {
             <Route path="/balance" element={ <BalanceStep01/> }/>
             <Route path="/balance/step-02" element={ <BalanceStep02/> }/>
             <Route path="/withdrawal" element={ <WithdrawalStep01/> }/>
+            <Route path="/withdrawal/step-02" element={ <WithdrawalStep02/> }/>
+            <Route path="/withdrawal/step-03" element={ <WithdrawalStep03/> }/>
             <Route path="/deposit" element={ <DepositStep01/> }/>
           </Route>
           <Route path="/" element={ <Login/> }/>
