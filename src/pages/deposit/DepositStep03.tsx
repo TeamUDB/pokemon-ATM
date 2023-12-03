@@ -75,7 +75,7 @@ const DepositStep03 = () => {
               success ? (
                 <>
                   <h2 className={"font-bold text-4xl"}>Transaccion Exitosa</h2>
-                  <h2 className={"font-light text-4xl"}>No olvide su efectivo</h2>
+                  <h2 className={"font-light text-4xl"}>No olvide su comprobante</h2>
                 </>
               ) : (
                 <>
